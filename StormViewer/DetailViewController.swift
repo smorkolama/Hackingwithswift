@@ -12,12 +12,13 @@ class DetailViewController: UIViewController {
 
     @IBOutlet var imageView: UIImageView!
     var selectedImage: String?
-    
+    var imageTitle: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        title = selectedImage
+        title = imageTitle
         if let imageToLoad = selectedImage {
             imageView.image = UIImage(named: imageToLoad)
         }
