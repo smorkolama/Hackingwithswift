@@ -13,6 +13,7 @@
 		433E937323717D530015F929 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 433E937123717D530015F929 /* Main.storyboard */; };
 		433E937523717D560015F929 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 433E937423717D560015F929 /* Assets.xcassets */; };
 		433E937823717D560015F929 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 433E937623717D560015F929 /* LaunchScreen.storyboard */; };
+		433E9382237183A60015F929 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 433E9381237183A60015F929 /* start.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		433E937423717D560015F929 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		433E937723717D560015F929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		433E937923717D560015F929 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		433E9381237183A60015F929 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		433E936A23717D530015F929 /* WordScramble */ = {
 			isa = PBXGroup;
 			children = (
+				433E9381237183A60015F929 /* start.txt */,
 				433E936B23717D530015F929 /* AppDelegate.swift */,
 				433E936D23717D530015F929 /* SceneDelegate.swift */,
 				433E936F23717D530015F929 /* ViewController.swift */,
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				433E937823717D560015F929 /* LaunchScreen.storyboard in Resources */,
+				433E9382237183A60015F929 /* start.txt in Resources */,
 				433E937523717D560015F929 /* Assets.xcassets in Resources */,
 				433E937323717D530015F929 /* Main.storyboard in Resources */,
 			);
