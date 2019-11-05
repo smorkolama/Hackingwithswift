@@ -12,8 +12,8 @@ import WebKit
 class WebViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
     var progressView: UIProgressView!
-    var websites = ["apple.com", "hackingwithswift.com"]
     var ac: UIAlertController?
+    var selectedWebsite: String?
 
     override func loadView() {
         webView = WKWebView()
@@ -24,10 +24,9 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
-        
         progressView = UIProgressView(progressViewStyle: .default)
         progressView.sizeToFit()
+//        progressView.progressViewStyle = .bar
         let progressButton = UIBarButtonItem(customView: progressView)
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
@@ -35,8 +34,13 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         toolbarItems = [progressButton, spacer, refresh]
         navigationController?.isToolbarHidden = false
         
+        guard let selectedWebsite = selectedWebsite else {
+            print("No website specified, can't load")
+            return
+        }
+
         // Do any additional setup after loading the view.
-        guard let url = URL(string: "https://" + websites[0]) else {
+        guard let url = URL(string: "https://" + selectedWebsite) else {
             print("Could not create URL")
             return
         }
@@ -53,16 +57,6 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress))
     }
 
-    @objc func openTapped() {
-        let ac = UIAlertController(title: "Open page", message: nil, preferredStyle: .actionSheet)
-        for website in websites {
-            ac.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
-        }
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        ac.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-        present(ac, animated:true)
-    }
-    
     func openPage(action: UIAlertAction) {
         guard let title = action.title else {
             print("Action has no title")
@@ -84,37 +78,16 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         title = webView.title
     }
-    
-//    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-//        let url = navigationAction.request.url
-//        print(String(describing: url))
-//
-//        if let host = url?.host {
-//            for website in websites {
-//                if host.contains(website) {
-//                    decisionHandler(.allow)
-//                    return;
-//                }
-//            }
-//        }
-//
-//        if let url = url {
-//        let ac = UIAlertController(title: nil, message: "Sorry, not allowed to visit \(url).", preferredStyle: .alert)
-//            ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (UIAlertAction) in
-//            }))
-//            present(ac, animated: true)
-//        }
-//        decisionHandler(.cancel)
-//
-//    }
-    
-    
 
     // KVO
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         print("KVO keypath: \(String(describing: keyPath)) change: \(String(describing: change))")
         if keyPath == "estimatedProgress" {
             progressView.progress = Float(webView.estimatedProgress) // convert Double to Float
+            
+            if webView.estimatedProgress == 1.0 {
+                progressView.progress = 0.0
+            }
         }
     }
 }
