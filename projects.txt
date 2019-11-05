@@ -3,3 +3,4 @@
 02-GuessTheFlag - Auto layout, asset catalog
 03-SocialMedia - Same as 01 but with image sharing, bar button items
 04-EasyBrowser - WKWebView, UIToolbar, UIProgressView, KVO
+04a-EasyBrowser-TableView - Same as above but now with initial list of UITableViewController
