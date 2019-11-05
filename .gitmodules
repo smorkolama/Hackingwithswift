@@ -1,0 +1,3 @@
+[submodule "HackingWithSwift"]
+	path = HackingWithSwift
+	url = https://github.com/twostraws/HackingWithSwift.git
