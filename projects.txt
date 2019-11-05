@@ -4,3 +4,4 @@
 03-SocialMedia - Same as 01 but with image sharing, bar button items
 04-EasyBrowser - WKWebView, UIToolbar, UIProgressView, KVO
 04a-EasyBrowser-TableView - Same as above but now with initial list of UITableViewController
+05-WordScramble - UITableViewController, UITextChecker, loading resources from bundle, weak self, making sure to use utf16.count with UIKit, SpriteKit or any other apple framework

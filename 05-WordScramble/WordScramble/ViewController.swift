@@ -57,6 +57,8 @@ class ViewController: UITableViewController {
     
     func submit(_ answer: String) {
         let lowerAnswer = answer.lowercased()
+        let errorTitle: String // this will work as long as it is set only once
+        let errorMessage: String // this will work as long as it is set only once
         
         if isPossible(word: lowerAnswer) {
             if isOriginal(word: lowerAnswer) {
@@ -65,21 +67,53 @@ class ViewController: UITableViewController {
                     // alternative would be tableview.reload() but that does not animate, just blindly reloads
                     let indexpath = IndexPath(row: 0, section: 0)
                     tableView.insertRows(at: [indexpath], with: .automatic)
+                    return
+                } else {
+                    errorTitle = "Word not recognised"
+                    errorMessage = "You can't just make them up, you know :)"
                 }
+            } else {
+                errorTitle = "Word used already"
+                errorMessage = "Be more original!"
             }
+        } else {
+            guard let title = title?.lowercased() else {
+                return
+            }
+            errorTitle = "Word not possible"
+            errorMessage = "You can't spell that word from \(title)"
         }
+        
+        let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
     }
     
     func isPossible(word: String) -> Bool {
+        guard var tempWord = title?.lowercased() else {
+            return false
+        }
+        
+        for letter in word {
+            if let position = tempWord.firstIndex(of: letter) {
+                tempWord.remove(at: position)
+            } else {
+                return false
+            }
+        }
+        
         return true
     }
     
     func isOriginal(word: String) -> Bool {
-        return true
+        return !usedWords.contains(word)
     }
     
     func isReal(word: String) -> Bool {
-        return true
+        let checker = UITextChecker()
+        let range = NSRange(location: 0, length: word.utf16.count) //In order to bridge Swift strings to Objective-C strings safely, we need to create an instance of NSRange using the UTF-16 count of our Swift string. This isn’t nice, I know, but I’m afraid it’s unavoidable until Apple cleans up these APIs.
+        let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
+        return misspelledRange.location == NSNotFound
     }
     
     // MARK: tableview
