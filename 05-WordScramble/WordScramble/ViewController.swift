@@ -63,7 +63,7 @@ class ViewController: UITableViewController {
             if isPossible(word: lowerAnswer) {
                 if isOriginal(word: lowerAnswer) {
                     if isReal(word: lowerAnswer) {
-                        usedWords.insert(answer, at: 0)
+                        usedWords.insert(lowerAnswer, at: 0)
                         // alternative would be tableview.reload() but that does not animate, just blindly reloads
                         let indexpath = IndexPath(row: 0, section: 0)
                         tableView.insertRows(at: [indexpath], with: .automatic)
