@@ -1,7 +1,10 @@
 01-StormViewer - Table view controller, navigation controller, FileManager
 01a-CatViewer - Same as 01 but with added animated gif support and cat pics
-02-GuessTheFlag - Auto layout, asset catalog
+02-GuessTheFlag - Auto layout, asset catalog, UIAlertController
 03-SocialMedia - Same as 01 but with image sharing, bar button items
 04-EasyBrowser - WKWebView, UIToolbar, UIProgressView, KVO
 04a-EasyBrowser-TableView - Same as above but now with initial list of UITableViewController
 05-WordScramble - UITableViewController, UITextChecker, loading resources from bundle, weak self, making sure to use utf16.count with UIKit, SpriteKit or any other apple framework
+06-AutoLayout - Same as 02-GuessTheFlag but with auto layout fixes for equal
+height, bottom, same apsect ratio
+06-Project6b/ - Autolayout using Visual Format Language
