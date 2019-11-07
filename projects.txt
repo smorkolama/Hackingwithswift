@@ -7,4 +7,4 @@
 05-WordScramble - UITableViewController, UITextChecker, loading resources from bundle, weak self, making sure to use utf16.count with UIKit, SpriteKit or any other apple framework
 06-AutoLayout - Same as 02-GuessTheFlag but with auto layout fixes for equal
 height, bottom, same apsect ratio
-06-Project6b/ - Autolayout using Visual Format Language
+06-Project6b/ - Autolayout using Visual Format Language, anchors, safe area

@@ -72,14 +72,34 @@ class ViewController: UIViewController {
 //        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[label1(==88)]-[label2(==88)]-[label3(==88)]-[label4(==88)]-[label5(==88)]-(>=10)-|", options: [], metrics: nil, views: viewsDictionary))
 
         // Add labelheight as a metrics dict
-        let metrics = ["labelHeight": 88]
+//        let metrics = ["labelHeight": 88]
 //        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[label1(==labelHeight)]-[label2(==labelHeight)]-[label3(==labelHeight)]-[label4(==labelHeight)]-[label5(==labelHeight)]-(>=10)-|", options: [], metrics: metrics, views: viewsDictionary))
 
         // Add height with less prio in the first label, and make other labels adopt the same height
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[label1(labelHeight@999)]-[label2(label1)]-[label3(label1)]-[label4(label1)]-[label5(label1)]->=10-|", options: [], metrics: metrics, views: viewsDictionary))
+//        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[label1(labelHeight@999)]-[label2(label1)]-[label3(label1)]-[label4(label1)]-[label5(label1)]->=10-|", options: [], metrics: metrics, views: viewsDictionary))
 
+        // Anchors but all on top of each other
+//        for label in [label1, label2, label3, label4, label5] {
+//            label.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+//            label.heightAnchor.constraint(equalToConstant: 88).isActive = true
+//        }
 
+        // Anchor label to previous one
+        var previous: UILabel?
+        for label in [label1, label2, label3, label4, label5] {
+            label.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+            label.heightAnchor.constraint(equalToConstant: 88).isActive = true
 
+            if let previous = previous {
+                // Create height constraint on previous label
+                label.topAnchor.constraint(equalTo: previous.bottomAnchor, constant: 10).isActive = true
+            } else { // fix safe area for first label
+                label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+            }
+
+            // set previous label to be current one
+            previous = label
+        }
     }
 }
 
