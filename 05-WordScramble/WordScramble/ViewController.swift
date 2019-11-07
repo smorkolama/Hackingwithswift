@@ -57,8 +57,6 @@ class ViewController: UITableViewController {
     
     func submit(_ answer: String) {
         let lowerAnswer = answer.lowercased()
-        let errorTitle: String // this will work as long as it is set only once
-        let errorMessage: String // this will work as long as it is set only once
 
         if isAllowed(word: lowerAnswer) {
             if isPossible(word: lowerAnswer) {
@@ -70,25 +68,23 @@ class ViewController: UITableViewController {
                         tableView.insertRows(at: [indexpath], with: .automatic)
                         return
                     } else {
-                        errorTitle = "Word not recognised"
-                        errorMessage = "You can't just make them up, you know :)"
+                        showErrorMessage("Word not recognised", "You can't just make them up, you know :)")
                     }
                 } else {
-                    errorTitle = "Word used already"
-                    errorMessage = "Be more original!"
+                    showErrorMessage("Word used already", "Be more original!")
                 }
             } else {
                 guard let title = title?.lowercased() else {
                     return
                 }
-                errorTitle = "Word not possible"
-                errorMessage = "You can't spell that word from \(title)"
+                showErrorMessage("Word not possible", "You can't spell that word from \(title)")
             }
         } else {
-            errorTitle = "Word not possible"
-            errorMessage = "Word should be longer than 3 characters and not the same as starting word"
+            showErrorMessage("Word not possible", "Word should be longer than 3 characters and not the same as starting word")
         }
+    }
 
+    func showErrorMessage(_ errorTitle: String, _ errorMessage: String) {
         let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
