@@ -59,36 +59,55 @@ class ViewController: UITableViewController {
         let lowerAnswer = answer.lowercased()
         let errorTitle: String // this will work as long as it is set only once
         let errorMessage: String // this will work as long as it is set only once
-        
-        if isPossible(word: lowerAnswer) {
-            if isOriginal(word: lowerAnswer) {
-                if isReal(word: lowerAnswer) {
-                    usedWords.insert(answer, at: 0)
-                    // alternative would be tableview.reload() but that does not animate, just blindly reloads
-                    let indexpath = IndexPath(row: 0, section: 0)
-                    tableView.insertRows(at: [indexpath], with: .automatic)
-                    return
+
+        if isAllowed(word: lowerAnswer) {
+            if isPossible(word: lowerAnswer) {
+                if isOriginal(word: lowerAnswer) {
+                    if isReal(word: lowerAnswer) {
+                        usedWords.insert(answer, at: 0)
+                        // alternative would be tableview.reload() but that does not animate, just blindly reloads
+                        let indexpath = IndexPath(row: 0, section: 0)
+                        tableView.insertRows(at: [indexpath], with: .automatic)
+                        return
+                    } else {
+                        errorTitle = "Word not recognised"
+                        errorMessage = "You can't just make them up, you know :)"
+                    }
                 } else {
-                    errorTitle = "Word not recognised"
-                    errorMessage = "You can't just make them up, you know :)"
+                    errorTitle = "Word used already"
+                    errorMessage = "Be more original!"
                 }
             } else {
-                errorTitle = "Word used already"
-                errorMessage = "Be more original!"
+                guard let title = title?.lowercased() else {
+                    return
+                }
+                errorTitle = "Word not possible"
+                errorMessage = "You can't spell that word from \(title)"
             }
         } else {
-            guard let title = title?.lowercased() else {
-                return
-            }
             errorTitle = "Word not possible"
-            errorMessage = "You can't spell that word from \(title)"
+            errorMessage = "Word should be longer than 3 characters and not the same as starting word"
         }
-        
+
         let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
     }
-    
+
+    func isAllowed(word: String) -> Bool {
+        if word.count < 3 {
+            return false
+        }
+
+        if let title = title {
+            if word == title {
+                return false
+            }
+        }
+
+        return true
+    }
+
     func isPossible(word: String) -> Bool {
         guard var tempWord = title?.lowercased() else {
             return false
@@ -115,7 +134,7 @@ class ViewController: UITableViewController {
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
         return misspelledRange.location == NSNotFound
     }
-    
+
     // MARK: tableview
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
