@@ -85,9 +85,27 @@ class ViewController: UIViewController {
 //        }
 
         // Anchor label to previous one
+//        var previous: UILabel?
+//        for label in [label1, label2, label3, label4, label5] {
+//            label.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+//            label.heightAnchor.constraint(equalToConstant: 88).isActive = true
+//
+//            if let previous = previous {
+//                // Create height constraint on previous label
+//                label.topAnchor.constraint(equalTo: previous.bottomAnchor, constant: 10).isActive = true
+//            } else { // fix safe area for first label
+//                label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+//            }
+//
+//            // set previous label to be current one
+//            previous = label
+//        }
+
+        // Anchor label to previous one, additional: use leading/trailing anchors
         var previous: UILabel?
         for label in [label1, label2, label3, label4, label5] {
-            label.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+            label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
+            label.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
             label.heightAnchor.constraint(equalToConstant: 88).isActive = true
 
             if let previous = previous {
