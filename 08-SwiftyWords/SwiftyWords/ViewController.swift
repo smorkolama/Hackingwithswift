@@ -66,6 +66,12 @@ class ViewController: UIViewController {
         clear.setTitle("CLEAR", for: .normal)
         view.addSubview(clear)
         
+        // no need to adjust later so don't store as property
+        let buttonsView = UIView()
+        buttonsView.backgroundColor = .cyan
+        buttonsView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(buttonsView)
+        
         NSLayoutConstraint.activate([
             scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
@@ -87,7 +93,7 @@ class ViewController: UIViewController {
             currentAnswer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             currentAnswer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
             // 20 points below clues label
-            currentAnswer.topAnchor.constraint(equalToSystemSpacingBelow: cluesLabel.bottomAnchor, multiplier: 20),
+            currentAnswer.topAnchor.constraint(equalTo: cluesLabel.bottomAnchor, constant: 20),
             // submit bottom is below current answer
             submit.topAnchor.constraint(equalTo: currentAnswer.bottomAnchor),
             // submit is 100 to the left of center
@@ -99,7 +105,16 @@ class ViewController: UIViewController {
             // clear Y position is same as submit
             clear.centerYAnchor.constraint(equalTo: submit.centerYAnchor),
             // clear height is 44
-            clear.heightAnchor.constraint(equalToConstant: 44)
+            clear.heightAnchor.constraint(equalToConstant: 44),
+            // buttons width/height
+            buttonsView.widthAnchor.constraint(equalToConstant: 750),
+            buttonsView.heightAnchor.constraint(equalToConstant: 320),
+            // buttons center horizontally
+            buttonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            // top anchor is bottom of submit button plus 20
+            buttonsView.topAnchor.constraint(equalTo: submit.bottomAnchor, constant: 20),
+            // pin to bottom of layout margin -20
+            buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
         ])
 
     }
