@@ -182,7 +182,9 @@ class ViewController: UIViewController {
             currentAnswer.text = ""
             score += 1
             
-            if score % 7 == 0 {
+            // Level is done when there is no occurence of ' letters'
+            if !(answersLabel.text?.contains(" letters") ?? true) {
+            //            if score % 7 == 0 {
                 let ac = UIAlertController(title: "Well done", message: "Are you ready for the next level?", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "Let's go", style: .default, handler: levelUp))
                 present(ac, animated: true)
@@ -261,6 +263,7 @@ class ViewController: UIViewController {
     func incorrectHandler(action: UIAlertAction)
     {
         clearInput()
+        score -= 1
     }
 }
 
