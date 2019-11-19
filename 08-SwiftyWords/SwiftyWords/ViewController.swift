@@ -117,6 +117,9 @@ class ViewController: UIViewController {
             buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
         ])
 
+        // clues and answers should be the ones to stretch to fill screen, default is 250 and lower means less effort to keep them in original size
+        cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
+        answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
     }
     
     override func viewDidLoad() {
