@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         view.addSubview(scoreLabel)
         
         cluesLabel = UILabel()
-        cluesLabel.backgroundColor = .red
+//        cluesLabel.backgroundColor = .red
         cluesLabel.translatesAutoresizingMaskIntoConstraints = false
         cluesLabel.font = UIFont.systemFont(ofSize: 24)
         cluesLabel.text = "CLUES"
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         view.addSubview(cluesLabel)
         
         answersLabel = UILabel()
-        answersLabel.backgroundColor = .green
+//        answersLabel.backgroundColor = .green
         answersLabel.translatesAutoresizingMaskIntoConstraints = false
         answersLabel.font = UIFont.systemFont(ofSize: 24)
         answersLabel.text = "ANSWERS"
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         view.addSubview(answersLabel)
         
         currentAnswer = UITextField()
-        currentAnswer.backgroundColor = .yellow
+//        currentAnswer.backgroundColor = .yellow
         currentAnswer.translatesAutoresizingMaskIntoConstraints = false
         currentAnswer.placeholder = "Tap letters to guess"
         currentAnswer.textAlignment = .center
@@ -54,21 +54,21 @@ class ViewController: UIViewController {
         
         // no need to adjust later so don't store as property
         let submit = UIButton(type: .system)
-        submit.backgroundColor = .orange
+//        submit.backgroundColor = .orange
         submit.translatesAutoresizingMaskIntoConstraints = false
         submit.setTitle("SUBMIT", for: .normal)
         view.addSubview(submit)
         
         // no need to adjust later so don't store as property
         let clear = UIButton(type: .system)
-        clear.backgroundColor = .purple
+//        clear.backgroundColor = .purple
         clear.translatesAutoresizingMaskIntoConstraints = false
         clear.setTitle("CLEAR", for: .normal)
         view.addSubview(clear)
         
         // no need to adjust later so don't store as property
         let buttonsView = UIView()
-        buttonsView.backgroundColor = .cyan
+//        buttonsView.backgroundColor = .cyan
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonsView)
         
@@ -120,6 +120,24 @@ class ViewController: UIViewController {
         // clues and answers should be the ones to stretch to fill screen, default is 250 and lower means less effort to keep them in original size
         cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
+        
+        let width = 150
+        let height = 80
+        
+        for row in 0..<4 {
+            for col in 0..<5 {
+                let letterButton = UIButton(type: .system)
+                letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
+                letterButton.setTitle("WWW", for: .normal)
+                
+                // calculate the frame of this button using column and row
+                let frame = CGRect(x: col * width, y: row * height, width: width, height: height)
+                letterButton.frame = frame
+                
+                buttonsView.addSubview(letterButton)
+                letterButtons.append(letterButton)
+            }
+        }
     }
     
     override func viewDidLoad() {
