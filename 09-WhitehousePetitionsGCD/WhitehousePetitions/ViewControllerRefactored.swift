@@ -6,9 +6,12 @@
 //  Copyright © 2019 NGTI. All rights reserved.
 //
 
+
+// NOTE: this is the solution from the book but it triggers main thread checker so I'll leave it here
+
 import UIKit
 
-class ViewController: UITableViewController {
+class ViewControllerRefactored: UITableViewController {
 
     var petitions = [Petition]()
     var filteredPetitions = [Petition]()
@@ -20,10 +23,11 @@ class ViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: .plain, target: self, action: #selector(creditsTapped))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(filterTapped))
 
-        fetchJSON()
+        performSelector(inBackground: #selector(fetchJSON), with: nil)
     }
 
-    func fetchJSON()
+    // runs on background thread
+    @objc func fetchJSON()
     {
         let urlString: String
         if navigationController?.tabBarItem.tag == 0 {
@@ -32,18 +36,17 @@ class ViewController: UITableViewController {
             urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
         }
 
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            if let url = URL(string: urlString) {
-                if let data = try? Data(contentsOf: url) { // might throw an error so use try?
-                    // Ready to parse
-                    self?.parse(json: data)
-                    return
-                }
+        if let url = URL(string: urlString) {
+            if let data = try? Data(contentsOf: url) { // might throw an error so use try?
+                // Ready to parse
+                parse(json: data)
+                return
             }
-            
-            self?.showError()
         }
+        
+        performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
     }
+    
     
     func parse(json: Data) {
         let decoder = JSONDecoder()
@@ -51,18 +54,18 @@ class ViewController: UITableViewController {
         if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
             petitions = jsonPetitions.results
             filteredPetitions = jsonPetitions.results
-            DispatchQueue.main.async { [weak self] in
-                self?.tableView.reloadData()
-            }
+            // new way of reloadData on main thread
+            tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+        } else {
+            performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
         }
     }
 
-    func showError() {
-        DispatchQueue.main.async { [weak self] in
-            let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            self?.present(ac, animated: true)
-        }
+    // will now always be called form main thread again
+    @objc func showError() {
+        let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
     }
 
     @objc func creditsTapped() {

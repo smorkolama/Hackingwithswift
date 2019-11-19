@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4382CB1123843C71009D37A5 /* ViewControllerRefactored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382CB1023843C71009D37A5 /* ViewControllerRefactored.swift */; };
 		43AB48C22374579C00A80A6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB48C12374579C00A80A6E /* AppDelegate.swift */; };
 		43AB48C42374579C00A80A6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB48C32374579C00A80A6E /* SceneDelegate.swift */; };
 		43AB48C62374579C00A80A6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB48C52374579C00A80A6E /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4382CB1023843C71009D37A5 /* ViewControllerRefactored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRefactored.swift; sourceTree = "<group>"; };
 		43AB48BE2374579C00A80A6E /* WhitehousePetitions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhitehousePetitions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43AB48C12374579C00A80A6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43AB48C32374579C00A80A6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				43AB48C12374579C00A80A6E /* AppDelegate.swift */,
 				43AB48C32374579C00A80A6E /* SceneDelegate.swift */,
 				43AB48C52374579C00A80A6E /* ViewController.swift */,
+				4382CB1023843C71009D37A5 /* ViewControllerRefactored.swift */,
 				43AB48D923745F1100A80A6E /* DetailViewController.swift */,
 				43AB48D523745A9D00A80A6E /* Petition.swift */,
 				43AB48D723745AFE00A80A6E /* Petitions.swift */,
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4382CB1123843C71009D37A5 /* ViewControllerRefactored.swift in Sources */,
 				43AB48C62374579C00A80A6E /* ViewController.swift in Sources */,
 				43AB48D623745A9D00A80A6E /* Petition.swift in Sources */,
 				43AB48C22374579C00A80A6E /* AppDelegate.swift in Sources */,
