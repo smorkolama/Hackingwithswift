@@ -14,7 +14,15 @@ class ViewController: UIViewController {
     var currentAnswer: UITextField!
     var scoreLabel: UILabel!
     var letterButtons = [UIButton]()
+    var activatedButtons = [UIButton]()
+    var solutions = [String]()
     
+    var score = 0 {
+        didSet { // property observer
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
+    var level = 1
 
     override func loadView() {
         view = UIView()
@@ -57,6 +65,7 @@ class ViewController: UIViewController {
 //        submit.backgroundColor = .orange
         submit.translatesAutoresizingMaskIntoConstraints = false
         submit.setTitle("SUBMIT", for: .normal)
+        submit.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
         view.addSubview(submit)
         
         // no need to adjust later so don't store as property
@@ -64,6 +73,7 @@ class ViewController: UIViewController {
 //        clear.backgroundColor = .purple
         clear.translatesAutoresizingMaskIntoConstraints = false
         clear.setTitle("CLEAR", for: .normal)
+        clear.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
         view.addSubview(clear)
         
         // no need to adjust later so don't store as property
@@ -124,6 +134,7 @@ class ViewController: UIViewController {
         let width = 150
         let height = 80
         
+        // don't use translatesAutoresizingMaskIntoConstraints = false here, in this case it makes sense to auto generate constraints based on size
         for row in 0..<4 {
             for col in 0..<5 {
                 let letterButton = UIButton(type: .system)
@@ -135,6 +146,7 @@ class ViewController: UIViewController {
                 letterButton.frame = frame
                 
                 buttonsView.addSubview(letterButton)
+                letterButton.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
                 letterButtons.append(letterButton)
             }
         }
@@ -143,8 +155,95 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        loadLevel()
     }
 
+    @objc func letterTapped(_ sender: UIButton) {
+        guard let buttonTitle = sender.titleLabel?.text else { return }
+        currentAnswer.text = currentAnswer.text?.appending(buttonTitle)
+        activatedButtons.append(sender)
+        sender.isHidden = true
+    }
+    
+    @objc func submitTapped(_ sender: UIButton) {
+        guard let answerText = currentAnswer.text else { return }
+        
+        if let solutionPosition = solutions.firstIndex(of: answerText) {
+            activatedButtons.removeAll()
+            
+            var splitAnswers = answersLabel.text?.components(separatedBy: "\n")
+            splitAnswers?[solutionPosition] = answerText
+            answersLabel.text = splitAnswers?.joined(separator: "\n")
+            
+            currentAnswer.text = ""
+            score += 1
+            
+            if score % 7 == 0 {
+                let ac = UIAlertController(title: "Well done", message: "Are you ready for the next level?", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "Let's go", style: .default, handler: levelUp))
+                present(ac, animated: true)
+            }
+        }
+    }
+    
+    @objc func clearTapped(_ sender: UIButton) {
+        currentAnswer.text = ""
+        for button in activatedButtons {
+            button.isHidden = false
+        }
+        
+        activatedButtons.removeAll()
+    }
+    
+    func loadLevel() {
+        var clueString = ""
+        var solutionString = ""
+        var letterBits = [String]()
+        
+        if let levelFileURL = Bundle.main.url(forResource: "level\(level)", withExtension: "txt") {
+            if let levelContents = try? String(contentsOf: levelFileURL) {
+                var lines = levelContents.components(separatedBy: "\n")
+                lines.shuffle()
+                
+                // Sample data: POR|TL|AND: Hipster heartland
+                for (index, line) in lines.enumerated() { // use enumerated because you get the index
+                    let parts = line.components(separatedBy: ":") // separate answer and clue first
+                    let answer = parts[0]
+                    let clue = parts[1]
+                    
+                    clueString += "\(index + 1). \(clue)\n"
+                    
+                    let solutionWord = answer.replacingOccurrences(of: "|", with: "") // word we are looking for
+                    solutionString += "\(solutionWord.count) letters\n"
+                    solutions.append(solutionWord)
+                    
+                    let bits = answer.components(separatedBy: "|") // get button contents
+                    letterBits += bits
+                }
+            }
+        }
 
+        cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+        answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        letterBits.shuffle()
+        if letterBits.count == letterButtons.count {
+            for i in 0 ..< letterButtons.count {
+                letterButtons[i].setTitle(letterBits[i], for: .normal)
+            }
+        }
+    }
+    
+    func levelUp(action: UIAlertAction)
+    {
+        level += 1
+        solutions.removeAll(keepingCapacity: true)
+
+        loadLevel()
+
+        for button in letterButtons {
+            button.isHidden = false
+        }
+    }
 }
 
