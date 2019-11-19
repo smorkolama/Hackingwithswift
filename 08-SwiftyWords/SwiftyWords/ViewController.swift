@@ -127,6 +127,10 @@ class ViewController: UIViewController {
             buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
         ])
 
+        // Add light gray border
+        buttonsView.layer.borderWidth = 1
+        buttonsView.layer.borderColor = UIColor.lightGray.cgColor
+        
         // clues and answers should be the ones to stretch to fill screen, default is 250 and lower means less effort to keep them in original size
         cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
@@ -183,16 +187,24 @@ class ViewController: UIViewController {
                 ac.addAction(UIAlertAction(title: "Let's go", style: .default, handler: levelUp))
                 present(ac, animated: true)
             }
+        } else {
+            let ac = UIAlertController(title: "Incorrect", message: "Sorry that word is not in the list", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: incorrectHandler))
+            present(ac, animated: true)
         }
     }
     
-    @objc func clearTapped(_ sender: UIButton) {
+    fileprivate func clearInput() {
         currentAnswer.text = ""
         for button in activatedButtons {
             button.isHidden = false
         }
         
         activatedButtons.removeAll()
+    }
+    
+    @objc func clearTapped(_ sender: UIButton) {
+        clearInput()
     }
     
     func loadLevel() {
@@ -244,6 +256,11 @@ class ViewController: UIViewController {
         for button in letterButtons {
             button.isHidden = false
         }
+    }
+    
+    func incorrectHandler(action: UIAlertAction)
+    {
+        clearInput()
     }
 }
 
