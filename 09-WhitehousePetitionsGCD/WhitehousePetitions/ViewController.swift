@@ -89,20 +89,27 @@ class ViewController: UITableViewController {
     }
 
     func filterList(_ filter: String) {
-        filteredPetitions.removeAll()
-        
-        if filter.isEmpty {
-            filteredPetitions = petitions
-        }
-        else {
-            let lowerFilter = filter.lowercased()
-            for petition in petitions {
-                if petition.title.lowercased().contains(lowerFilter) || petition.body.lowercased().contains(lowerFilter) {
-                    filteredPetitions.append(petition)
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.filteredPetitions.removeAll()
+            
+            if filter.isEmpty {
+                strongSelf.filteredPetitions = strongSelf.petitions
+            }
+            else {
+                let lowerFilter = filter.lowercased()
+                for petition in strongSelf.petitions {
+                    if petition.title.lowercased().contains(lowerFilter) || petition.body.lowercased().contains(lowerFilter) {
+                        strongSelf.filteredPetitions.append(petition)
+                    }
                 }
             }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
         }
-        tableView.reloadData()
     }
 
     
