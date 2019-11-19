@@ -12,4 +12,4 @@ height, bottom, same apsect ratio
 08-SwiftyWords - Autolayout with manual constraints, property observer, difference in translatesAutoresizingMaskIntoConstraints, array enumeration
 09-WhitehousePetitionsGCD - Load stuff in the background with GCD, performSelector(onMainThread/inBackground) 
 09-StormViewerGCD - GCD version of 01-StormViewer
-08-SwiftyWordsGCD - GCD version of 08-SwiftyWords, added strongSelf to make the code easier
+09-SwiftyWordsGCD - GCD version of 08-SwiftyWords, added strongSelf to make the code easier
