@@ -21,6 +21,10 @@ class ViewController: UICollectionViewController {
         let picker = UIImagePickerController()
         picker.allowsEditing = true
         picker.delegate = self
+#if !targetEnvironment(simulator)
+        picker.sourceType = .camera
+        picker.cameraDevice = .front
+#endif
         present(picker, animated: true)
     }
     
