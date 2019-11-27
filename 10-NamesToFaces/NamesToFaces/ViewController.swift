@@ -55,11 +55,16 @@ class ViewController: UICollectionViewController {
         
         let ac = UIAlertController(title: "Rename person", message: nil, preferredStyle: .alert)
         ac.addTextField()
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak self, weak ac] _ in
             guard let newName = ac?.textFields?[0].text else { return }
             person.name = newName
             self?.collectionView.reloadData()
+        })
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        ac.addAction(UIAlertAction(title: "Remove", style: .destructive) { [weak self] _ in
+            guard let self = self else { return }
+            self.people.remove(at: indexPath.item)
+            self.collectionView.reloadData()
         })
         present(ac, animated: true)
     }
