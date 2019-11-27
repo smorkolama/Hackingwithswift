@@ -13,4 +13,5 @@ height, bottom, same apsect ratio
 09-WhitehousePetitionsGCD - Load stuff in the background with GCD, performSelector(onMainThread/inBackground) 
 09-StormViewerGCD - GCD version of 01-StormViewer
 09-SwiftyWordsGCD - GCD version of 08-SwiftyWords, added strongSelf to make the code easier
-10-NamesToFaces - UICollectionView, UIImagePicker
+10-NamesToFaces - UICollectionView (set Estimate size to None in xcode 11), UIImagePicker (camera and library)
+10-StormViewerCollectionView - UICollectionView version of 01-StormViewer, learned about inter-cell spacing and estimate size: custom 
