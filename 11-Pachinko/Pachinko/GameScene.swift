@@ -68,6 +68,11 @@ class GameScene: SKScene {
         editLabel.text = "Edit"
         editLabel.position = CGPoint(x: 80, y: 700)
         addChild(editLabel)
+        
+        // add some music
+        let music = SKAudioNode(fileNamed: "orbital.mp3")
+        music.autoplayLooped = true
+        addChild(music)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -150,10 +155,14 @@ class GameScene: SKScene {
         if object.name == "good" {
             print("Destroy good ball")
             destroy(ball: ball)
+            let soundEffect = SKAction.playSoundFileNamed("magic.mp3", waitForCompletion: false)
+            run(soundEffect)
             score += 1
         } else if object.name == "bad" {
             print("Destroy bad ball")
             destroy(ball: ball)
+            let soundEffect = SKAction.playSoundFileNamed("boing.mp3", waitForCompletion: false)
+            run(soundEffect)
             score -= 1
         }
     }
@@ -161,7 +170,7 @@ class GameScene: SKScene {
     func destroy(ball: SKNode) {
         if let fireParticles = SKEmitterNode(fileNamed: "FireParticles") {
             fireParticles.position = ball.position
-            addChild(fireParticles)
+//            addChild(fireParticles)
         }
 
         ball.removeFromParent()

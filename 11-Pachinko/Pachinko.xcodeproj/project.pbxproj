@@ -29,6 +29,9 @@
 		439DCB2C238FFE4400ED1EA7 /* ballPurple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 439DCB1D238FFE4300ED1EA7 /* ballPurple@2x.png */; };
 		439DCB2D238FFE4400ED1EA7 /* ballBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 439DCB1E238FFE4400ED1EA7 /* ballBlue@2x.png */; };
 		439DCB2E238FFE4400ED1EA7 /* bouncer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 439DCB1F238FFE4400ED1EA7 /* bouncer@2x.png */; };
+		439DCB3023901B2500ED1EA7 /* orbital.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 439DCB2F23901B2500ED1EA7 /* orbital.mp3 */; };
+		439DCB3323901E1100ED1EA7 /* magic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 439DCB3123901E1100ED1EA7 /* magic.mp3 */; };
+		439DCB3423901E1100ED1EA7 /* boing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 439DCB3223901E1100ED1EA7 /* boing.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		439DCB1D238FFE4300ED1EA7 /* ballPurple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ballPurple@2x.png"; sourceTree = "<group>"; };
 		439DCB1E238FFE4400ED1EA7 /* ballBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ballBlue@2x.png"; sourceTree = "<group>"; };
 		439DCB1F238FFE4400ED1EA7 /* bouncer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bouncer@2x.png"; sourceTree = "<group>"; };
+		439DCB2F23901B2500ED1EA7 /* orbital.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = orbital.mp3; sourceTree = "<group>"; };
+		439DCB3123901E1100ED1EA7 /* magic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = magic.mp3; sourceTree = "<group>"; };
+		439DCB3223901E1100ED1EA7 /* boing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boing.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,9 @@
 		439DCAF8238FF47600ED1EA7 /* Pachinko */ = {
 			isa = PBXGroup;
 			children = (
+				439DCB2F23901B2500ED1EA7 /* orbital.mp3 */,
+				439DCB3223901E1100ED1EA7 /* boing.mp3 */,
+				439DCB3123901E1100ED1EA7 /* magic.mp3 */,
 				439DCAF9238FF47600ED1EA7 /* AppDelegate.swift */,
 				439DCAFB238FF47600ED1EA7 /* GameScene.sks */,
 				439DCAFF238FF47600ED1EA7 /* GameScene.swift */,
@@ -173,14 +182,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				439DCB3323901E1100ED1EA7 /* magic.mp3 in Resources */,
 				439DCB20238FFE4400ED1EA7 /* slotGlowGood@2x.png in Resources */,
 				439DCB05238FF47600ED1EA7 /* Main.storyboard in Resources */,
 				439DCB27238FFE4400ED1EA7 /* ballCyan@2x.png in Resources */,
 				439DCAFC238FF47600ED1EA7 /* GameScene.sks in Resources */,
 				439DCB2C238FFE4400ED1EA7 /* ballPurple@2x.png in Resources */,
 				439DCB22238FFE4400ED1EA7 /* background@2x.jpg in Resources */,
+				439DCB3023901B2500ED1EA7 /* orbital.mp3 in Resources */,
 				439DCB28238FFE4400ED1EA7 /* slotBaseBad@2x.png in Resources */,
 				439DCB26238FFE4400ED1EA7 /* ballGreen@2x.png in Resources */,
+				439DCB3423901E1100ED1EA7 /* boing.mp3 in Resources */,
 				439DCB07238FF47900ED1EA7 /* Assets.xcassets in Resources */,
 				439DCB29238FFE4400ED1EA7 /* slotBaseGood@2x.png in Resources */,
 				439DCB2A238FFE4400ED1EA7 /* slotGlowBad@2x.png in Resources */,
