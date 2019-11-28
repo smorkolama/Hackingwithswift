@@ -68,6 +68,7 @@ class GameScene: SKScene {
         bouncer.position = position
         bouncer.physicsBody = SKPhysicsBody(circleOfRadius: bouncer.size.width / 2.0)
         bouncer.physicsBody?.isDynamic = false // can't be moved, if set to true it falls below the screen :)
+        bouncer.name = "bouncer"
         addChild(bouncer)
     }
     
@@ -117,10 +118,14 @@ class GameScene: SKScene {
 
 extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
+        guard let nodeA = contact.bodyA.node else { return }
+        guard let nodeB = contact.bodyB.node else { return }
+        
+        print("Contact between \(String(describing: nodeA.name))) and \(String(describing: nodeB.name))")
         if contact.bodyA.node?.name == "ball" {
-            collisionBetween(ball: contact.bodyA.node!, object: contact.bodyB.node!)
+            collisionBetween(ball: nodeA, object: nodeB)
         } else if contact.bodyB.node?.name == "ball" {
-            collisionBetween(ball: contact.bodyB.node!, object: contact.bodyA.node!)
+            collisionBetween(ball: nodeB, object: nodeA)
         }
     }
 }
