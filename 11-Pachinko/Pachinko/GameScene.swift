@@ -24,11 +24,9 @@ class GameScene: SKScene {
         background.zPosition = -1
         addChild(background)
         
-//        let bouncer = SKSpriteNode(imageNamed: "bouncer")
-//        bouncer.position = CGPoint(x: 512, y: 384) // middle X axis, bottom of screen
-//        bouncer.physicsBody = SKPhysicsBody(circleOfRadius: bouncer.size.width / 2.0)
-//        bouncer.physicsBody?.isDynamic = false // can't be moved, if set to true it falls below the screen :)
-//        addChild(bouncer)
+        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+        physicsWorld.contactDelegate = self
+        
         makeSlot(at: CGPoint(x: 128, y: 0), isGood: true)
         makeSlot(at: CGPoint(x: 384, y: 0), isGood: false)
         makeSlot(at: CGPoint(x: 640, y: 0), isGood: true)
@@ -49,12 +47,18 @@ class GameScene: SKScene {
 //            box.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64)) // match physics size to box size
 //            box.position = location
 //            addChild(box)
-//            physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
             
             let ball = SKSpriteNode(imageNamed: "ballRed")
             ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
             ball.physicsBody?.restitution = 0.4 // bounciness
+            
+            // shortcut to tell about any collision
+            // contactTestBitMask = "which collisions do you want to know about", default set to nothing
+            // collisionBitMask =  "which nodes should I bump into", default set to everything
+            ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
+            
             ball.position = location
+            ball.name = "ball"
             addChild(ball)
         }
     }
@@ -74,18 +78,49 @@ class GameScene: SKScene {
         if (isGood) {
             slotBase = SKSpriteNode(imageNamed: "slotBaseGood")
             slotGlow = SKSpriteNode(imageNamed: "slotGlowGood")
+            slotBase.name = "good"
         } else {
             slotBase = SKSpriteNode(imageNamed: "slotBaseBad")
             slotGlow = SKSpriteNode(imageNamed: "slotGlowBad")
+            slotBase.name = "bad"
         }
         
         slotBase.position = position
         slotGlow.position = position
+
+        // Add rectangle physics to slots, should not move when hit
+        slotBase.physicsBody = SKPhysicsBody(rectangleOf: slotBase.size) // set physics size to size of image
+        slotBase.physicsBody?.isDynamic = false
+        
         addChild(slotBase)
         addChild(slotGlow)
         
         let spin = SKAction.rotate(byAngle: .pi, duration: 10) // rotate by 180 degrees in 10 secs
         let spinForever = SKAction.repeatForever(spin)
         slotGlow.run(spinForever)
+    }
+    
+    func collisionBetween(ball: SKNode, object: SKNode) {
+        if object.name == "good" {
+            print("Destroy good ball")
+            destroy(ball: ball)
+        } else if object.name == "bad" {
+            print("Destroy bad ball")
+            destroy(ball: ball)
+        }
+    }
+    
+    func destroy(ball: SKNode) {
+        ball.removeFromParent()
+    }
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+        if contact.bodyA.node?.name == "ball" {
+            collisionBetween(ball: contact.bodyA.node!, object: contact.bodyB.node!)
+        } else if contact.bodyB.node?.name == "ball" {
+            collisionBetween(ball: contact.bodyB.node!, object: contact.bodyA.node!)
+        }
     }
 }
