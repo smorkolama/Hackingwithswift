@@ -12,7 +12,7 @@ import CoreImage
 class ViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var intensity: UISlider!
 
     var currentImage: UIImage!
     // CoreImage stuff
@@ -33,15 +33,61 @@ class ViewController: UIViewController {
         let picker = UIImagePickerController()
         picker.allowsEditing = true
         picker.delegate = self
+#if !targetEnvironment(simulator)
+        picker.sourceType = .camera
+        picker.cameraDevice = .front
+        picker.cameraFlashMode = .off
+#endif
         present(picker, animated: true)
     }
 
     @IBAction func changeFilterPressed(_ sender: Any) {
+        let ac = UIAlertController(title: "Choose filter", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "CIBumpDistortion", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CIGaussianBlur", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CIPixellate", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CISepiaTone", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CITwirlDistortion", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CIUnsharpMask", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CIVignette", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: setFilter))
+        present(ac, animated: true)
+    }
+    
+    func setFilter(action: UIAlertAction) {
+        // make sure to have valid image
+        guard currentImage != nil else { return }
+        
+        // safely read alert action title
+        guard let actionTitle = action.title else { return }
+        
+        // reset
+        intensity.value = 0.5
+        
+        currentFilter = CIFilter(name: actionTitle)
+        let beginImage = CIImage(image: currentImage)
+        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        
+        applyProcessing()
     }
     
     @IBAction func savePressed(_ sender: Any) {
+        guard let image = imageView.image else { return }
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
 
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
+    
     @IBAction func intensityChanged(_ sender: Any) {
         applyProcessing()
     }
@@ -50,9 +96,18 @@ class ViewController: UIViewController {
         // read output image from current filter
         guard let image = currentFilter.outputImage else { return }
 
-        // set filter intensity 0...1
-        currentFilter.setValue(slider.value, forKey: kCIInputIntensityKey)
+        let inputKeys = currentFilter.inputKeys
         
+        if inputKeys.contains(kCIInputIntensityKey) {
+            currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
+        } else if inputKeys.contains(kCIInputRadiusKey) {
+            currentFilter.setValue(intensity.value * 200, forKey: kCIInputRadiusKey)
+        } else if inputKeys.contains(kCIInputScaleKey) {
+            currentFilter.setValue(intensity.value * 10, forKey: kCIInputScaleKey)
+        } else if inputKeys.contains(kCIInputCenterKey) {
+            currentFilter.setValue(CIVector(x: currentImage.size.width / 2, y: currentImage.size.height / 2), forKey: kCIInputCenterKey)
+        }
+                
         // create new image based on current image, image.extent = all of the image
         if let cgimg = context.createCGImage(image, from: image.extent) {
             let processedImage = UIImage(cgImage: cgimg)

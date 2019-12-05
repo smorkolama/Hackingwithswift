@@ -91,7 +91,7 @@
                     <navigationItem key="navigationItem" id="did-dT-iD6"/>
                     <connections>
                         <outlet property="imageView" destination="wWI-Hl-TAt" id="JuM-ju-Bps"/>
-                        <outlet property="slider" destination="Fd6-fj-XuK" id="AHB-C3-MQR"/>
+                        <outlet property="intensity" destination="Fd6-fj-XuK" id="AHB-C3-MQR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
