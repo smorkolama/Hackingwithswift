@@ -11,9 +11,34 @@ import UIKit
 class ViewController: UICollectionViewController {
     var people = [Person]()
     
+    func load() {
+        let defaults = UserDefaults.standard
+        if let savedPeople = defaults.object(forKey: "people") as? Data {
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                // can't use people here, need to specify exact time as first param
+                people = try jsonDecoder.decode([Person].self, from: savedPeople)
+            } catch {
+                print("Failed to load people: \(error)")
+            }
+        }
+    }
+    
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        if let savedData = try? jsonEncoder.encode(people) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "people")
+        } else {
+            print("Failed to save people")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        load()
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
     }
 
@@ -62,12 +87,14 @@ class ViewController: UICollectionViewController {
         ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak self, weak ac] _ in
             guard let newName = ac?.textFields?[0].text else { return }
             person.name = newName
+            self?.save()
             self?.collectionView.reloadData()
         })
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         ac.addAction(UIAlertAction(title: "Remove", style: .destructive) { [weak self] _ in
             guard let self = self else { return }
             self.people.remove(at: indexPath.item)
+            self.save()
             self.collectionView.reloadData()
         })
         present(ac, animated: true)
@@ -88,6 +115,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         
         let person = Person(name: "Unknown", image: imageName)
         people.append(person)
+        save()
         collectionView.reloadData()
         dismiss(animated: true)
     }

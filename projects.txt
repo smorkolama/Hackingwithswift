@@ -17,4 +17,5 @@ height, bottom, same apsect ratio
 10-StormViewerCollectionView - UICollectionView version of 01-StormViewer, learned about inter-cell spacing and estimate size: custom 
 11-Pachinko - Spritekit, SKScene, SKSpriteNode, SKPhysicsContactDelegate, SKSKEmitterNode and its properties
 12-NamesToFaces_a - UserDefaults, NSCoding, NSKeyedArchiver/Unarchiver
-12-NamesToFaces - UserDefaults, 
+12-NamesToFaces - UserDefaults, Codable, JSONEncoder/Decoder
+12-StormViewerUserDefaults - Modify project 1 for user defaults
