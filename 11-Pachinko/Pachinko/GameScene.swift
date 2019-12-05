@@ -92,6 +92,7 @@ class GameScene: SKScene {
                     box.position = location
                     box.physicsBody = SKPhysicsBody(rectangleOf: box.size)
                     box.physicsBody?.isDynamic = false
+                    box.name = "box"
                     addChild(box)
                 } else {
                     makeBall(at: CGPoint(x: location.x, y: 768)) // allways drop ball from the top
@@ -164,22 +165,25 @@ class GameScene: SKScene {
         if object.name == "good" {
             print("Destroy good ball")
             destroy(ball: ball)
-            let soundEffect = SKAction.playSoundFileNamed("magic.mp3", waitForCompletion: false)
-            run(soundEffect)
+//            let soundEffect = SKAction.playSoundFileNamed("magic.mp3", waitForCompletion: false)
+//            run(soundEffect)
             score += 1
         } else if object.name == "bad" {
             print("Destroy bad ball")
             destroy(ball: ball)
-            let soundEffect = SKAction.playSoundFileNamed("boing.mp3", waitForCompletion: false)
-            run(soundEffect)
+//            let soundEffect = SKAction.playSoundFileNamed("boing.mp3", waitForCompletion: false)
+//            run(soundEffect)
             score -= 1
+        } else if object.name == "box" {
+            print("Destroy box")
+            destroy(ball: object)
         }
     }
     
     func destroy(ball: SKNode) {
         if let fireParticles = SKEmitterNode(fileNamed: "FireParticles") {
             fireParticles.position = ball.position
-//            addChild(fireParticles)
+            addChild(fireParticles)
         }
 
         ball.removeFromParent()
@@ -192,9 +196,9 @@ extension GameScene: SKPhysicsContactDelegate {
         guard let nodeB = contact.bodyB.node else { return }
         
         print("Contact between \(String(describing: nodeA.name))) and \(String(describing: nodeB.name))")
-        if contact.bodyA.node?.name == "ball" {
+        if nodeA.name == "ball" {
             collisionBetween(ball: nodeA, object: nodeB)
-        } else if contact.bodyB.node?.name == "ball" {
+        } else if nodeB.name == "ball" {
             collisionBetween(ball: nodeB, object: nodeA)
         }
     }
