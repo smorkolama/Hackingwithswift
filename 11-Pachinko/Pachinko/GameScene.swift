@@ -72,7 +72,7 @@ class GameScene: SKScene {
         // add some music
         let music = SKAudioNode(fileNamed: "orbital.mp3")
         music.autoplayLooped = true
-        addChild(music)
+//        addChild(music)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -94,23 +94,32 @@ class GameScene: SKScene {
                     box.physicsBody?.isDynamic = false
                     addChild(box)
                 } else {
-                    // create a ball
-                    let ball = SKSpriteNode(imageNamed: "ballRed")
-                    ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
-                    ball.physicsBody?.restitution = 0.4 // bounciness
-                    
-                    // shortcut to tell about any collision
-                    // contactTestBitMask = "which collisions do you want to know about", default set to nothing
-                    // collisionBitMask =  "which nodes should I bump into", default set to everything
-                    ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
-                    
-//                    ball.position = location
-                    ball.position = CGPoint(x: location.x, y: 768) // allways drop ball from the top
-                    ball.name = "ball"
-                    addChild(ball)
+                    makeBall(at: CGPoint(x: location.x, y: 768)) // allways drop ball from the top
                 }
             }
         }
+    }
+    
+    func ballName() -> String {
+        let colors = ["Blue", "Cyan", "Green", "Grey", "Purple", "Red", "Yellow"]
+        return "ball\(colors.randomElement()!)"
+    }
+    
+    func makeBall(at position: CGPoint) {
+        // create a ball
+        let ball = SKSpriteNode(imageNamed: ballName())
+        ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
+        ball.physicsBody?.restitution = 0.4 // bounciness
+        
+        // shortcut to tell about any collision
+        // contactTestBitMask = "which collisions do you want to know about", default set to nothing
+        // collisionBitMask =  "which nodes should I bump into", default set to everything
+        ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
+        
+        //                    ball.position = location
+        ball.position = position
+        ball.name = "ball"
+        addChild(ball)
     }
     
     func makeBouncer(at position: CGPoint) {
