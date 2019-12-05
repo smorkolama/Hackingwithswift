@@ -15,6 +15,25 @@ class ViewController: UICollectionViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
+        load()
+    }
+    
+    func load() {
+        let defaults = UserDefaults.standard
+        if let savedPeople = defaults.object(forKey: "people") as? Data {
+            print("Load: \(savedPeople)")
+            if let decodedPeople = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedPeople) as? [Person] {
+                people = decodedPeople
+            }
+        }
+    }
+    
+    func save() {
+        // will fail at the moment with requiringSecureCoding=true
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: people, requiringSecureCoding: false) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "people")
+        }
     }
 
     @objc func addNewPerson() {
@@ -62,6 +81,7 @@ class ViewController: UICollectionViewController {
         ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak self, weak ac] _ in
             guard let newName = ac?.textFields?[0].text else { return }
             person.name = newName
+            self?.save()
             self?.collectionView.reloadData()
         })
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -69,6 +89,7 @@ class ViewController: UICollectionViewController {
             guard let self = self else { return }
             self.people.remove(at: indexPath.item)
             self.collectionView.reloadData()
+            self.save()
         })
         present(ac, animated: true)
     }
@@ -89,6 +110,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         let person = Person(name: "Unknown", image: imageName)
         people.append(person)
         collectionView.reloadData()
+        save()
         dismiss(animated: true)
     }
     
