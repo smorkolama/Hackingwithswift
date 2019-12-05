@@ -16,4 +16,4 @@ height, bottom, same apsect ratio
 10-NamesToFaces - UICollectionView (set Estimate size to None in xcode 11), UIImagePicker (camera and library), UUID, saving to documents dir
 10-StormViewerCollectionView - UICollectionView version of 01-StormViewer, learned about inter-cell spacing and estimate size: custom 
 11-Pachinko - Spritekit, SKScene, SKSpriteNode, SKPhysicsContactDelegate, SKSKEmitterNode and its properties
-12-NamesToFaces - UserDefaults
+12-NamesToFaces - UserDefaults, NSCoding, NSKeyedArchiver/Unarchiver, JSONEncoder/Decoder, Codable

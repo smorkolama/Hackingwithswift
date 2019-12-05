@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		439DCAD22386C6AC00ED1EA7 /* NamesToFaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NamesToFaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		439DCAD22386C6AC00ED1EA7 /* NamesToFaces12b.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NamesToFaces12b.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		439DCAD52386C6AC00ED1EA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		439DCAD72386C6AC00ED1EA7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		439DCAD92386C6AC00ED1EA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +52,7 @@
 		439DCAD32386C6AC00ED1EA7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				439DCAD22386C6AC00ED1EA7 /* NamesToFaces.app */,
+				439DCAD22386C6AC00ED1EA7 /* NamesToFaces12b.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,7 +90,7 @@
 			);
 			name = NamesToFaces;
 			productName = NamesToFaces;
-			productReference = 439DCAD22386C6AC00ED1EA7 /* NamesToFaces.app */;
+			productReference = 439DCAD22386C6AC00ED1EA7 /* NamesToFaces12b.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -299,8 +299,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = info.smork.NamesToFaces12;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = info.smork.NamesToFaces12b;
+				PRODUCT_NAME = NamesToFaces12b;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -317,8 +317,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = info.smork.NamesToFaces12;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = info.smork.NamesToFaces12b;
+				PRODUCT_NAME = NamesToFaces12b;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
