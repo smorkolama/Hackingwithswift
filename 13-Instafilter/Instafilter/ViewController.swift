@@ -61,9 +61,6 @@ class ViewController: UIViewController {
         // safely read alert action title
         guard let actionTitle = action.title else { return }
         
-        // reset
-        intensity.value = 0.5
-        
         currentFilter = CIFilter(name: actionTitle)
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
@@ -99,15 +96,15 @@ class ViewController: UIViewController {
         let inputKeys = currentFilter.inputKeys
         
         if inputKeys.contains(kCIInputIntensityKey) {
-            currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
-        } else if inputKeys.contains(kCIInputRadiusKey) {
-            currentFilter.setValue(intensity.value * 200, forKey: kCIInputRadiusKey)
-        } else if inputKeys.contains(kCIInputScaleKey) {
-            currentFilter.setValue(intensity.value * 10, forKey: kCIInputScaleKey)
-        } else if inputKeys.contains(kCIInputCenterKey) {
+            currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey) }
+        if inputKeys.contains(kCIInputRadiusKey) {
+            currentFilter.setValue(intensity.value * 200, forKey: kCIInputRadiusKey) }
+        if inputKeys.contains(kCIInputScaleKey) {
+            currentFilter.setValue(intensity.value * 10, forKey: kCIInputScaleKey) }
+        if inputKeys.contains(kCIInputCenterKey) {
             currentFilter.setValue(CIVector(x: currentImage.size.width / 2, y: currentImage.size.height / 2), forKey: kCIInputCenterKey)
         }
-                
+
         // create new image based on current image, image.extent = all of the image
         if let cgimg = context.createCGImage(image, from: image.extent) {
             let processedImage = UIImage(cgImage: cgimg)
