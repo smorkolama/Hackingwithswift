@@ -29,7 +29,15 @@ class ViewController: UICollectionViewController {
     }
     
     func save() {
-        // will fail at the moment with requiringSecureCoding=true
+        // will fail at the moment with requiringSecureCoding=true, because Person does not implement NSSecureCoding
+//        do {
+//            let savedData = try NSKeyedArchiver.archivedData(withRootObject: people, requiringSecureCoding: true)
+//            let defaults = UserDefaults.standard
+//            defaults.set(savedData, forKey: "people")
+//        } catch {
+//            print("Error: \(error)")
+//        }
+        
         if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: people, requiringSecureCoding: false) {
             let defaults = UserDefaults.standard
             defaults.set(savedData, forKey: "people")
