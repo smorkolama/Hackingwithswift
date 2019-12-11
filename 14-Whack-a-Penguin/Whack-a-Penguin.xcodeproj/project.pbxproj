@@ -22,6 +22,7 @@
 		43D0CD8D23A1062E00ABA760 /* penguinGood@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43D0CD8523A1062E00ABA760 /* penguinGood@2x.png */; };
 		43D0CD8E23A1062E00ABA760 /* whackBad.caf in Resources */ = {isa = PBXBuildFile; fileRef = 43D0CD8623A1062E00ABA760 /* whackBad.caf */; };
 		43D0CD8F23A1062E00ABA760 /* penguinEvil@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43D0CD8723A1062E00ABA760 /* penguinEvil@2x.png */; };
+		43D0CD9123A1085800ABA760 /* WhackSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0CD9023A1085800ABA760 /* WhackSlot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		43D0CD8523A1062E00ABA760 /* penguinGood@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "penguinGood@2x.png"; path = "../../HackingWithSwift/Classic/project14-files/Content/penguinGood@2x.png"; sourceTree = "<group>"; };
 		43D0CD8623A1062E00ABA760 /* whackBad.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = whackBad.caf; path = "../../HackingWithSwift/Classic/project14-files/Content/whackBad.caf"; sourceTree = "<group>"; };
 		43D0CD8723A1062E00ABA760 /* penguinEvil@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "penguinEvil@2x.png"; path = "../../HackingWithSwift/Classic/project14-files/Content/penguinEvil@2x.png"; sourceTree = "<group>"; };
+		43D0CD9023A1085800ABA760 /* WhackSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhackSlot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				4362CE1C23A101C300247A1B /* GameScene.sks */,
 				4362CE2023A101C300247A1B /* GameScene.swift */,
 				4362CE2223A101C300247A1B /* GameViewController.swift */,
+				43D0CD9023A1085800ABA760 /* WhackSlot.swift */,
 				4362CE2423A101C300247A1B /* Main.storyboard */,
 				4362CE2723A101C400247A1B /* Assets.xcassets */,
 				4362CE2923A101C400247A1B /* LaunchScreen.storyboard */,
@@ -176,6 +179,7 @@
 			files = (
 				4362CE2123A101C300247A1B /* GameScene.swift in Sources */,
 				4362CE2323A101C300247A1B /* GameViewController.swift in Sources */,
+				43D0CD9123A1085800ABA760 /* WhackSlot.swift in Sources */,
 				4362CE1B23A101C300247A1B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,8 +18,8 @@ class GameViewController: UIViewController {
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
+                // Fix for ipad pro, just stretch a little for ipad pro 11-inch (different aspect ratio than)
+                scene.scaleMode = .fill
                 
                 // Present the scene
                 view.presentScene(scene)

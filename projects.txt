@@ -20,3 +20,4 @@ height, bottom, same apsect ratio
 12-NamesToFaces - UserDefaults, Codable, JSONEncoder/Decoder
 12-StormViewerUserDefaults - Modify project 1 for user defaults
 13-Instafilter - CoreImage, saving to photo library
+14-Whack-a-Penguin - Spritekit, SKCropNode, SKAction.moveBy, SKTexture
