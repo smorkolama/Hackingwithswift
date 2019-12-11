@@ -1,3 +1,7 @@
 [submodule "HackingWithSwift"]
 	path = HackingWithSwift
 	url = https://github.com/twostraws/HackingWithSwift.git
+
+[submodule "uiimage-from-animated-gif"]
+	path = 03-SocialMedia/StormViewer/uiimage-from-animated-gif
+	url = https://github.com/mayoff/uiimage-from-animated-gif.git
