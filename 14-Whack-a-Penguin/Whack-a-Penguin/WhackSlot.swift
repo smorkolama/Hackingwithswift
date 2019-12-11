@@ -66,9 +66,13 @@ class WhackSlot: SKNode {
     func hit() {
         isHit = true
 
-        if let smoke = SKEmitterNode(fileNamed: "Smoke") {
-            smoke.position = charNode.position
-            addChild(smoke)
+        let smoke = SKEmitterNode(fileNamed: "Smoke")
+
+        let generateSmoke = SKAction.run {
+            if let smoke = smoke  {
+                smoke.position = self.charNode.position
+                self.addChild(smoke)
+            }
         }
 
         let delay = SKAction.wait(forDuration: 0.25)
@@ -76,6 +80,12 @@ class WhackSlot: SKNode {
         let notVisible = SKAction.run {
             self.isVisible = false
         }
-        charNode.run(SKAction.sequence([delay, hide, notVisible]))
+
+        let removeSmoke = SKAction.run {
+            if let smoke = smoke {
+                smoke.removeFromParent()
+            }
+        }
+        charNode.run(SKAction.sequence([generateSmoke, delay, hide, notVisible, removeSmoke]))
     }
 }

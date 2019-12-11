@@ -10,6 +10,7 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
+    let gameOver = SKSpriteNode(imageNamed: "gameOver")
     var gameScore: SKLabelNode!
     var score = 0 {
         didSet {
@@ -61,9 +62,9 @@ class GameScene: SKScene {
                 slot.hide()
             }
 
-            let gameOver = SKSpriteNode(imageNamed: "gameOver")
             gameOver.position = CGPoint(x: 512, y: 384)
             gameOver.zPosition = 1
+            gameOver.name = "gameOver"
             addChild(gameOver)
             return
         }
@@ -93,6 +94,18 @@ class GameScene: SKScene {
         let tappedNodes = nodes(at: location)
 
         for node in tappedNodes {
+            if node.name == "gameOver" {
+                // Reset game
+                removeChildren(in: [gameOver])
+                score = 0
+                numRounds = 0
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                    self?.createEnemy()
+                }
+                return
+            }
+
+
             guard let whackSlot = node.parent?.parent as? WhackSlot else { continue }
             if !whackSlot.isVisible { continue}
             if whackSlot.isHit { continue }
