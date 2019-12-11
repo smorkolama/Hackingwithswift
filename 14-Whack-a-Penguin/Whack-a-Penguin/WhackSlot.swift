@@ -81,11 +81,12 @@ class WhackSlot: SKNode {
             self.isVisible = false
         }
 
+        let delayRemoveSmoke = SKAction.wait(forDuration: 2.0)
         let removeSmoke = SKAction.run {
             if let smoke = smoke {
                 smoke.removeFromParent()
             }
         }
-        charNode.run(SKAction.sequence([generateSmoke, delay, hide, notVisible, removeSmoke]))
+        charNode.run(SKAction.sequence([generateSmoke, delay, hide, notVisible, delayRemoveSmoke, removeSmoke]))
     }
 }
