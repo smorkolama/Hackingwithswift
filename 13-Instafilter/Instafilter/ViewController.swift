@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var intensity: UISlider!
+    @IBOutlet var changeFilterButton: UIButton!
 
     var currentImage: UIImage!
     // CoreImage stuff
@@ -26,7 +27,9 @@ class ViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(importPicture))
         
         context = CIContext()
-        currentFilter = CIFilter(name: "CISepiaTone")
+        let filterName = "CISepiaTone"
+        currentFilter = CIFilter(name: filterName)
+        changeFilterButton.setTitle("\(filterName)", for: .normal)
     }
     
     @objc func importPicture() {
@@ -64,12 +67,19 @@ class ViewController: UIViewController {
         currentFilter = CIFilter(name: actionTitle)
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
-        
+
+        changeFilterButton.setTitle("\(actionTitle)", for: .normal)
+
         applyProcessing()
     }
     
     @IBAction func savePressed(_ sender: Any) {
-        guard let image = imageView.image else { return }
+        guard let image = imageView.image else {
+            let ac = UIAlertController(title: "No image to save", message: nil, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+            return
+        }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
 
