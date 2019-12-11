@@ -93,6 +93,7 @@
                         <outlet property="changeFilterButton" destination="RHp-Ia-hvl" id="sfu-jg-nG4"/>
                         <outlet property="imageView" destination="wWI-Hl-TAt" id="JuM-ju-Bps"/>
                         <outlet property="intensity" destination="Fd6-fj-XuK" id="AHB-C3-MQR"/>
+                        <outlet property="intensityLabel" destination="leQ-GV-bLp" id="GEp-ms-jvA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

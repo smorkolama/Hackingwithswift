@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var intensity: UISlider!
     @IBOutlet var changeFilterButton: UIButton!
+    @IBOutlet var intensityLabel: UILabel!
 
     var currentImage: UIImage!
     // CoreImage stuff
@@ -68,6 +69,22 @@ class ViewController: UIViewController {
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
 
+
+        let inputKeys = currentFilter.inputKeys
+
+        if inputKeys.contains(kCIInputIntensityKey) {
+            intensityLabel.text = "Intensity"
+    }
+        else if inputKeys.contains(kCIInputRadiusKey) {
+            intensityLabel.text = "Input radius"
+        }
+        else if inputKeys.contains(kCIInputScaleKey) {
+            intensityLabel.text = "Scale"
+        }
+        else if inputKeys.contains(kCIInputCenterKey) {
+            intensityLabel.text = "Input center"
+        }
+
         changeFilterButton.setTitle("\(actionTitle)", for: .normal)
 
         applyProcessing()
@@ -107,11 +124,11 @@ class ViewController: UIViewController {
         
         if inputKeys.contains(kCIInputIntensityKey) {
             currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey) }
-        if inputKeys.contains(kCIInputRadiusKey) {
+        else if inputKeys.contains(kCIInputRadiusKey) {
             currentFilter.setValue(intensity.value * 200, forKey: kCIInputRadiusKey) }
-        if inputKeys.contains(kCIInputScaleKey) {
+        else if inputKeys.contains(kCIInputScaleKey) {
             currentFilter.setValue(intensity.value * 10, forKey: kCIInputScaleKey) }
-        if inputKeys.contains(kCIInputCenterKey) {
+        else if inputKeys.contains(kCIInputCenterKey) {
             currentFilter.setValue(CIVector(x: currentImage.size.width / 2, y: currentImage.size.height / 2), forKey: kCIInputCenterKey)
         }
 
