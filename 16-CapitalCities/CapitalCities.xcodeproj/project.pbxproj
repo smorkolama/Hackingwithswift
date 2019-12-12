@@ -14,6 +14,7 @@
 		4350685123A248E4008FEA1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4350685023A248E4008FEA1E /* Assets.xcassets */; };
 		4350685423A248E4008FEA1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4350685223A248E4008FEA1E /* LaunchScreen.storyboard */; };
 		4350685C23A24ABC008FEA1E /* Capital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4350685B23A24ABC008FEA1E /* Capital.swift */; };
+		4350685E23A2654E008FEA1E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4350685D23A2654E008FEA1E /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4350685323A248E4008FEA1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4350685523A248E4008FEA1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4350685B23A24ABC008FEA1E /* Capital.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capital.swift; sourceTree = "<group>"; };
+		4350685D23A2654E008FEA1E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				4350685023A248E4008FEA1E /* Assets.xcassets */,
 				4350685223A248E4008FEA1E /* LaunchScreen.storyboard */,
 				4350685523A248E4008FEA1E /* Info.plist */,
+				4350685D23A2654E008FEA1E /* DetailViewController.swift */,
 			);
 			path = CapitalCities;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			files = (
 				4350684C23A248E3008FEA1E /* ViewController.swift in Sources */,
 				4350684823A248E3008FEA1E /* AppDelegate.swift in Sources */,
+				4350685E23A2654E008FEA1E /* DetailViewController.swift in Sources */,
 				4350685C23A24ABC008FEA1E /* Capital.swift in Sources */,
 				4350684A23A248E3008FEA1E /* SceneDelegate.swift in Sources */,
 			);
