@@ -16,6 +16,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        title = "Capital Cities"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(changeMapView))
+        
         let london = Capital(title: "London", coordinate: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), info: "Home to the 2012 summer olympics")
         let oslo = Capital(title: "Oslo", coordinate: CLLocationCoordinate2D(latitude: 59.95, longitude: 10.75), info: "Founded over a a thousand years ago")
         let paris = Capital(title: "Paris", coordinate: CLLocationCoordinate2D(latitude: 48.8567, longitude: 2.3508), info: "Often called City of Light")
@@ -23,6 +27,29 @@ class ViewController: UIViewController {
         let washington = Capital(title: "Washington DC", coordinate: CLLocationCoordinate2D(latitude: 38.895111, longitude: -77.036667), info: "Named after George himself")
 
         mapView.addAnnotations([london, oslo, paris, rome, washington])
+    }
+    
+    @objc func changeMapView() {
+        let ac = UIAlertController(title: "Map view", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Standard", style: .default) { [weak self] _ in
+            self?.mapView.mapType = . standard
+        })
+        ac.addAction(UIAlertAction(title: "Satellite", style: .default) { [weak self] _ in
+            self?.mapView.mapType = . satellite
+        })
+        ac.addAction(UIAlertAction(title: "Hybrid", style: .default) { [weak self] _ in
+            self?.mapView.mapType = . hybrid
+        })
+        ac.addAction(UIAlertAction(title: "Satellite FlyOver", style: .default) { [weak self] _ in
+            self?.mapView.mapType = . satelliteFlyover
+        })
+        ac.addAction(UIAlertAction(title: "Hybrid FlyOver", style: .default) { [weak self] _ in
+            self?.mapView.mapType = . hybridFlyover
+        })
+        ac.addAction(UIAlertAction(title: "Muted standard", style: .default) { [weak self] _ in
+            self?.mapView.mapType = . mutedStandard
+        })
+        present(ac, animated: true)
     }
 }
 
