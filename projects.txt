@@ -7,7 +7,7 @@
 05-WordScramble - UITableViewController, UITextChecker, loading resources from bundle, weak self, making sure to use utf16.count with UIKit, SpriteKit or any other apple framework
 06-AutoLayout - Same as 02-GuessTheFlag but with auto layout fixes for equal
 height, bottom, same apsect ratio
-06-Project6b - Autolayout using Visual Format Language, anchors, safe area
+06-Project6b - Autolayout using VFL (Visual Format Language), anchors, safe area
 07-WhitehousePetitions - Fill Data from URL, use Codable to parse JSON, WKWebView, UITabBarController
 08-SwiftyWords - Autolayout with manual constraints, property observer, difference in translatesAutoresizingMaskIntoConstraints, array enumeration
 09-WhitehousePetitionsGCD - Load stuff in the background with GCD, performSelector(onMainThread/inBackground) 
@@ -21,3 +21,4 @@ height, bottom, same apsect ratio
 12-StormViewerUserDefaults - Modify project 1 for user defaults
 13-Instafilter - CoreImage, saving to photo library
 14-Whack-a-Penguin - Spritekit, SKCropNode, SKAction.moveBy, SKTexture, SKAction.wait/run/sequence
+15-Animation - CoreAnimation / CGAffineTransform, spring damping
