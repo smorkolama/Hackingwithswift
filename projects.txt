@@ -23,3 +23,4 @@ height, bottom, same apsect ratio
 14-Whack-a-Penguin - Spritekit, SKCropNode, SKAction.moveBy, SKTexture, SKAction.wait/run/sequence
 15-Animation - CoreAnimation / CGAffineTransform, spring damping
 15-SwiftyWordsAnimated - Buttons animated
+15-GuessTheFlagAnimated - Buttons bounce (not very pretty)
