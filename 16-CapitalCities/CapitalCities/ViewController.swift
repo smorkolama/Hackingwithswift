@@ -34,7 +34,7 @@ extension ViewController: MKMapViewDelegate {
         // re-use identifier
         let identifier = "Capital"
         
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
 
         // Could be that we need to construct our own
         if annotationView == nil {
@@ -46,6 +46,8 @@ extension ViewController: MKMapViewDelegate {
         } else {
             annotationView?.annotation = annotation
         }
+        
+        annotationView?.pinTintColor = UIColor.green
         
         return annotationView
     }
