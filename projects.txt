@@ -25,3 +25,4 @@ height, bottom, same apsect ratio
 15-SwiftyWordsAnimated - Buttons animated
 15-GuessTheFlagAnimated - Buttons bounce (not very pretty)
 16-CapitalCities - MapKit, MKAnnotation
+17-SpaceRace - SpriteKit (gravity, contact test bit mask)
