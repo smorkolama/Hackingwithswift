@@ -23,6 +23,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let possibleEnemies = ["ball", "hammer", "tv"]
     var isGameOver = false
     var gameTimer: Timer?
+    var createdEnemies = 0
+    var timerInterval = 1.0
 
     override func didMove(to view: SKView) {
         backgroundColor = .black
@@ -51,9 +53,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
 
         // create enemy timer
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.35, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: timerInterval, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
     }
-    
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
@@ -67,6 +68,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             location.y = 668
         }
 
+        // From https://www.reddit.com/r/hackingwithswift/comments/dl5wwk/project_17_touchesended_challenge_clarification/f5tlzj3/
+        guard nodes(at: location).contains(player) else { return } // this is so much easier
+
         player.position = location;
     }
 
@@ -79,7 +83,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     @objc func createEnemy() {
+        if isGameOver { return } // don't create new ones when game over
         guard let enemy = possibleEnemies.randomElement() else { return }
+
+        createdEnemies += 1
+        print("Created enemies: \(createdEnemies)")
+        if createdEnemies == 20 {
+            gameTimer?.invalidate()
+
+            createdEnemies = 0
+            timerInterval -= 0.1
+            if (timerInterval < 0 ) { timerInterval = 0}
+            print("Timer interval is now: \(timerInterval)")
+
+            gameTimer = Timer.scheduledTimer(timeInterval: timerInterval, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+        }
 
         let sprite = SKSpriteNode(imageNamed: enemy)
         sprite.position = CGPoint(x: 1200, y: Int.random(in: 50...736)) // create off-screen
