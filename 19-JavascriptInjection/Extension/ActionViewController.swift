@@ -44,6 +44,7 @@ class ActionViewController: UIViewController {
             }
         }
 
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(edit))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
 
         let notificationCenter = NotificationCenter.default
@@ -86,4 +87,15 @@ class ActionViewController: UIViewController {
         extensionContext?.completeRequest(returningItems: [item])
     }
 
+    @objc func edit() {
+        let ac = UIAlertController(title: "Sample scripts", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Print title", style: .default, handler: { [weak self] _ in
+            self?.script.text = "alert(document.title)"
+        }))
+        ac.addAction(UIAlertAction(title: "Something else", style: .default, handler: { [weak self] _ in
+            self?.script.text = "alert(\"hello\")"
+        }))
+        ac.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+        present(ac, animated: true)
+    }
 }
