@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		435C04DD23ABB91900487820 /* explode.sks in Resources */ = {isa = PBXBuildFile; fileRef = 435C04D823ABB91900487820 /* explode.sks */; };
+		435C04DE23ABB91900487820 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 435C04D923ABB91900487820 /* background@2x.png */; };
+		435C04DF23ABB91900487820 /* fuse.sks in Resources */ = {isa = PBXBuildFile; fileRef = 435C04DA23ABB91900487820 /* fuse.sks */; };
+		435C04E023ABB91900487820 /* rocket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 435C04DB23ABB91900487820 /* rocket@2x.png */; };
+		435C04E123ABB91900487820 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 435C04DC23ABB91900487820 /* spark.png */; };
 		43DB398523ABB85D00C1FBA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DB398423ABB85D00C1FBA1 /* AppDelegate.swift */; };
 		43DB398723ABB85D00C1FBA1 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 43DB398623ABB85D00C1FBA1 /* GameScene.sks */; };
 		43DB398923ABB85D00C1FBA1 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 43DB398823ABB85D00C1FBA1 /* Actions.sks */; };
@@ -18,6 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		435C04D823ABB91900487820 /* explode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = explode.sks; path = "../../HackingWithSwift/Classic/project20-files/Content/explode.sks"; sourceTree = "<group>"; };
+		435C04D923ABB91900487820 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "../../HackingWithSwift/Classic/project20-files/Content/background@2x.png"; sourceTree = "<group>"; };
+		435C04DA23ABB91900487820 /* fuse.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = fuse.sks; path = "../../HackingWithSwift/Classic/project20-files/Content/fuse.sks"; sourceTree = "<group>"; };
+		435C04DB23ABB91900487820 /* rocket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rocket@2x.png"; path = "../../HackingWithSwift/Classic/project20-files/Content/rocket@2x.png"; sourceTree = "<group>"; };
+		435C04DC23ABB91900487820 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = "../../HackingWithSwift/Classic/project20-files/Content/spark.png"; sourceTree = "<group>"; };
 		43DB398123ABB85D00C1FBA1 /* FireworksNight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireworksNight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43DB398423ABB85D00C1FBA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43DB398623ABB85D00C1FBA1 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -69,6 +79,11 @@
 				43DB399123ABB85E00C1FBA1 /* Assets.xcassets */,
 				43DB399323ABB85E00C1FBA1 /* LaunchScreen.storyboard */,
 				43DB399623ABB85E00C1FBA1 /* Info.plist */,
+				435C04D923ABB91900487820 /* background@2x.png */,
+				435C04D823ABB91900487820 /* explode.sks */,
+				435C04DA23ABB91900487820 /* fuse.sks */,
+				435C04DB23ABB91900487820 /* rocket@2x.png */,
+				435C04DC23ABB91900487820 /* spark.png */,
 			);
 			path = FireworksNight;
 			sourceTree = "<group>";
@@ -133,9 +148,14 @@
 			files = (
 				43DB399023ABB85D00C1FBA1 /* Main.storyboard in Resources */,
 				43DB398723ABB85D00C1FBA1 /* GameScene.sks in Resources */,
+				435C04DF23ABB91900487820 /* fuse.sks in Resources */,
 				43DB399223ABB85E00C1FBA1 /* Assets.xcassets in Resources */,
+				435C04DE23ABB91900487820 /* background@2x.png in Resources */,
+				435C04E123ABB91900487820 /* spark.png in Resources */,
+				435C04E023ABB91900487820 /* rocket@2x.png in Resources */,
 				43DB399523ABB85E00C1FBA1 /* LaunchScreen.storyboard in Resources */,
 				43DB398923ABB85D00C1FBA1 /* Actions.sks in Resources */,
+				435C04DD23ABB91900487820 /* explode.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
