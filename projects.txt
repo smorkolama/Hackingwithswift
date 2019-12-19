@@ -27,4 +27,4 @@ height, bottom, same apsect ratio
 16-CapitalCities - MapKit, MKAnnotation
 17-SpaceRace - SpriteKit (gravity/angular velocity, SKPhysicsBody per-pixel collision), NSTimer
 18-Debugging - Debugging (conditional breakpoint, exception breakpoint, variadic nature of print())
-19-JavascriptInjection - Safari extension
+19-JavascriptInjection - Safari extension, passing data both ways

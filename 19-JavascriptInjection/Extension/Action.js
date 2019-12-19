@@ -6,6 +6,8 @@ Action.prototype = {
     },
 
     finalize: function(parameters) {
+        var customJavaScript = parameters["customJavaScript"];
+        eval(customJavaScript);
     }
 };
 
