@@ -26,3 +26,4 @@ height, bottom, same apsect ratio
 15-GuessTheFlagAnimated - Buttons bounce (not very pretty)
 16-CapitalCities - MapKit, MKAnnotation
 17-SpaceRace - SpriteKit (gravity/angular velocity, SKPhysicsBody per-pixel collision), NSTimer
+18-Debugging - Debugging (conditional breakpoint, exception breakpoint, variadic nature of print())
