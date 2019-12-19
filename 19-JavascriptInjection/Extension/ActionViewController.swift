@@ -45,6 +45,34 @@ class ActionViewController: UIViewController {
         }
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyBoard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyBoard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+
+    }
+
+    @objc func adjustForKeyBoard(notification: Notification) {
+        // get frame of keyboard when it has finished animating
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return } // NSValue with CGRect inside
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+
+        // convert to our view's coordinates (handles rotation where height and width are flipped)
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            script.contentInset = .zero
+        } else {
+            // account for keyboard, substract view.safeAreaInsets.bottom or else text will scroll before it reaches the keyboard (just remove and try it)
+            script.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+
+        // match the contentInset to save time
+        script.scrollIndicatorInsets = script.contentInset
+
+        // make sure cursor is still visible
+        let selectedRange = script.selectedRange
+        script.scrollRangeToVisible(selectedRange)
     }
 
     // in the end this will call the finalize() function in javascript
