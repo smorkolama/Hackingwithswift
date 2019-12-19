@@ -10,12 +10,16 @@ import UIKit
 import MobileCoreServices
 
 class ActionViewController: UIViewController {
+    let userDefaults = UserDefaults.standard
 
     @IBOutlet var script: UITextView!
     @IBOutlet weak var imageView: UIImageView!
 
     var pageTitle = ""
     var pageURL = ""
+    var pageHost: String?
+    var storedScript: String?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +40,23 @@ class ActionViewController: UIViewController {
                     self?.pageTitle = javaScriptValues["title"] as? String ?? ""
                     self?.pageURL = javaScriptValues["URL"] as? String ?? ""
 
+                    if let currentURL = URL(string: self?.pageURL ?? "") {
+                        self?.pageHost = currentURL.host
+
+                        if let pageHost = self?.pageHost {
+                            self?.storedScript = self?.userDefaults.string(forKey: pageHost)
+                        }
+                    }
+
                     // Should always be on main thread, current closure can be called on any thread
                     DispatchQueue.main.async { // no [weak self] necessary, it's already weak from current closure
                         self?.title = self?.pageTitle
+
+                        // restore
+                        if let storedScript = self?.storedScript {
+                            print("Restoring script for \(self?.pageHost ?? "unknown")")
+                            self?.script.text = storedScript
+                        }
                     }
                 }
             }
@@ -84,6 +102,10 @@ class ActionViewController: UIViewController {
         let customJavaScript = NSItemProvider(item: webDictionary, typeIdentifier: kUTTypePropertyList as String)
         item.attachments = [customJavaScript]
 
+        // save script to userdefaults
+        if let pageHost = self.pageHost {
+            userDefaults.set(script.text, forKey: pageHost)
+        }
         extensionContext?.completeRequest(returningItems: [item])
     }
 
