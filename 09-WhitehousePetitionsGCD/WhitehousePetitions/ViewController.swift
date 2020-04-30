@@ -48,6 +48,8 @@ class ViewController: UITableViewController {
     func parse(json: Data) {
         let decoder = JSONDecoder()
 
+        let dataString = String(data: json, encoding: .utf8)
+        NSLog("Received data: \(dataString)")
         if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
             petitions = jsonPetitions.results
             filteredPetitions = jsonPetitions.results
