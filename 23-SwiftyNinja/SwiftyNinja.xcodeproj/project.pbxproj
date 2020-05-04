@@ -15,6 +15,9 @@
 		4362603B24605106005E6BF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4362603924605106005E6BF5 /* Main.storyboard */; };
 		4362603D2460510B005E6BF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4362603C2460510B005E6BF5 /* Assets.xcassets */; };
 		436260402460510B005E6BF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4362603E2460510B005E6BF5 /* LaunchScreen.storyboard */; };
+		4362604E24605ADC005E6BF5 /* swoosh1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4362604C24605AC1005E6BF5 /* swoosh1.caf */; };
+		4362604F24605ADC005E6BF5 /* swoosh2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4362604D24605AC1005E6BF5 /* swoosh2.caf */; };
+		4362605024605ADC005E6BF5 /* swoosh3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4362604B24605AC1005E6BF5 /* swoosh3.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		4362603C2460510B005E6BF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4362603F2460510B005E6BF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		436260412460510B005E6BF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4362604B24605AC1005E6BF5 /* swoosh3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = swoosh3.caf; path = Assets.xcassets/swoosh3.dataset/swoosh3.caf; sourceTree = "<group>"; };
+		4362604C24605AC1005E6BF5 /* swoosh1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = swoosh1.caf; path = Assets.xcassets/swoosh1.dataset/swoosh1.caf; sourceTree = "<group>"; };
+		4362604D24605AC1005E6BF5 /* swoosh2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = swoosh2.caf; path = Assets.xcassets/swoosh2.dataset/swoosh2.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,9 @@
 				4362603724605106005E6BF5 /* GameViewController.swift */,
 				4362603924605106005E6BF5 /* Main.storyboard */,
 				4362603C2460510B005E6BF5 /* Assets.xcassets */,
+				4362604C24605AC1005E6BF5 /* swoosh1.caf */,
+				4362604D24605AC1005E6BF5 /* swoosh2.caf */,
+				4362604B24605AC1005E6BF5 /* swoosh3.caf */,
 				4362603E2460510B005E6BF5 /* LaunchScreen.storyboard */,
 				436260412460510B005E6BF5 /* Info.plist */,
 			);
@@ -132,10 +141,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4362603B24605106005E6BF5 /* Main.storyboard in Resources */,
+				4362605024605ADC005E6BF5 /* swoosh3.caf in Resources */,
 				4362603224605106005E6BF5 /* GameScene.sks in Resources */,
 				4362603D2460510B005E6BF5 /* Assets.xcassets in Resources */,
+				4362604F24605ADC005E6BF5 /* swoosh2.caf in Resources */,
 				436260402460510B005E6BF5 /* LaunchScreen.storyboard in Resources */,
 				4362603424605106005E6BF5 /* Actions.sks in Resources */,
+				4362604E24605ADC005E6BF5 /* swoosh1.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
