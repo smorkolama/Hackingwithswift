@@ -29,4 +29,4 @@ height, bottom, same apsect ratio
 18-Debugging - Debugging (conditional breakpoint, exception breakpoint, variadic nature of print())
 19-JavascriptInjection - Safari extension, passing data both ways, adjusting UITextField so keyboard does not hide parts of it
 20-FireworksNight - SpriteKit, shake gestures, Timer, UIBezierPath, 'for case let'
-21-LocalNotifications - DateComponents, local notifications, calendar/interval triggers
+21-LocalNotifications - DateComponents, local notifications, calendar/interval triggers, notification actions

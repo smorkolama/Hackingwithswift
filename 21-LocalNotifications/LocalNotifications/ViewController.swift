@@ -33,6 +33,8 @@ class ViewController: UIViewController {
     @objc func scheduleLocal() {
         let center = UNUserNotificationCenter.current()
 
+        registerCategories()
+
         // TEST
         center.removeAllPendingNotificationRequests()
 
@@ -53,10 +55,44 @@ class ViewController: UIViewController {
 
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         center.add(request)
-
-
-
     }
 
+    func registerCategories() {
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+
+        let show = UNNotificationAction(identifier: "show", title: "Tell me more...", options: .foreground)
+        let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [])
+
+        center.setNotificationCategories([category])
+    }
+}
+
+extension ViewController: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        // pull out the buried userInfo dictionary
+        let userInfo = response.notification.request.content.userInfo
+
+        if let customData = userInfo["customData"] as? String {
+            print("Custom data received: \(customData)")
+
+            switch response.actionIdentifier {
+            case UNNotificationDefaultActionIdentifier:
+                // swipe to unlock
+                print("Default identifier")
+            case "show":
+                // user tapped 'show more info button'
+                print("Show more information...")
+
+            default:
+                break;
+                }
+        }
+
+        // don't forget this
+        completionHandler()
+    }
 }
 
