@@ -28,4 +28,5 @@ height, bottom, same apsect ratio
 17-SpaceRace - SpriteKit (gravity/angular velocity, SKPhysicsBody per-pixel collision), Timer
 18-Debugging - Debugging (conditional breakpoint, exception breakpoint, variadic nature of print())
 19-JavascriptInjection - Safari extension, passing data both ways, adjusting UITextField so keyboard does not hide parts of it
-20-FireworksNight - SpriteKit, shake gestures, Timer, UIBezierPath
+20-FireworksNight - SpriteKit, shake gestures, Timer, UIBezierPath, 'for case let'
+21-LocalNotifications - DateComponents, local notifications, calendar/interval triggers
