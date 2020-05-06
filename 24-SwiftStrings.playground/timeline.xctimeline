@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Timeline
+   version = "3.0">
+   <TimelineItems>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/benjamin/course/24-SwiftStrings.playground#CharacterRangeLen=16&amp;CharacterRangeLoc=1825&amp;EndingColumnNumber=21&amp;EndingLineNumber=69&amp;StartingColumnNumber=5&amp;StartingLineNumber=69&amp;Timestamp=610469743.119952"
+         lockedSize = "{608.380859375, 71}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/benjamin/course/24-SwiftStrings.playground#CharacterRangeLen=16&amp;CharacterRangeLoc=1993&amp;EndingColumnNumber=17&amp;EndingLineNumber=73&amp;StartingColumnNumber=1&amp;StartingLineNumber=73&amp;Timestamp=610469743.12009"
+         lockedSize = "{605.19921875, 71}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/benjamin/course/24-SwiftStrings.playground#CharacterRangeLen=16&amp;CharacterRangeLoc=2107&amp;EndingColumnNumber=17&amp;EndingLineNumber=74&amp;StartingColumnNumber=1&amp;StartingLineNumber=74&amp;Timestamp=610469743.120194"
+         lockedSize = "{606.013671875, 71}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/benjamin/course/24-SwiftStrings.playground#CharacterRangeLen=16&amp;CharacterRangeLoc=2336&amp;EndingColumnNumber=16&amp;EndingLineNumber=76&amp;StartingColumnNumber=0&amp;StartingLineNumber=76&amp;Timestamp=610469743.120293"
+         lockedSize = "{606.787109375, 71}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/benjamin/course/24-SwiftStrings.playground#CharacterRangeLen=16&amp;CharacterRangeLoc=2222&amp;EndingColumnNumber=17&amp;EndingLineNumber=75&amp;StartingColumnNumber=1&amp;StartingLineNumber=75&amp;Timestamp=610469743.120401"
+         lockedSize = "{607.095703125, 71}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/benjamin/course/24-SwiftStrings.playground#CharacterRangeLen=16&amp;CharacterRangeLoc=2337&amp;EndingColumnNumber=17&amp;EndingLineNumber=76&amp;StartingColumnNumber=1&amp;StartingLineNumber=76&amp;Timestamp=610469743.120499"
+         lockedSize = "{610.150390625, 71}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/benjamin/course/24-SwiftStrings.playground#CharacterRangeLen=0&amp;CharacterRangeLoc=2581&amp;EndingColumnNumber=0&amp;EndingLineNumber=78&amp;StartingColumnNumber=0&amp;StartingLineNumber=78&amp;Timestamp=610469743.120593"
+         lockedSize = "{609.4765625, 75}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/benjamin/course/24-SwiftStrings.playground#CharacterRangeLen=16&amp;CharacterRangeLoc=2453&amp;EndingColumnNumber=17&amp;EndingLineNumber=77&amp;StartingColumnNumber=1&amp;StartingLineNumber=77&amp;Timestamp=610469743.12069"
+         lockedSize = "{608.150390625, 71}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/benjamin/course/24-SwiftStrings.playground#CharacterRangeLen=16&amp;CharacterRangeLoc=2699&amp;EndingColumnNumber=17&amp;EndingLineNumber=80&amp;StartingColumnNumber=1&amp;StartingLineNumber=80&amp;Timestamp=610469743.120786"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/benjamin/course/24-SwiftStrings.playground#CharacterRangeLen=5&amp;CharacterRangeLoc=2813&amp;EndingColumnNumber=10&amp;EndingLineNumber=82&amp;StartingColumnNumber=5&amp;StartingLineNumber=82&amp;Timestamp=610469743.120877"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/benjamin/course/24-SwiftStrings.playground#CharacterRangeLen=5&amp;CharacterRangeLoc=2880&amp;EndingColumnNumber=6&amp;EndingLineNumber=83&amp;StartingColumnNumber=1&amp;StartingLineNumber=83&amp;Timestamp=610469743.1209641"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+   </TimelineItems>
+</Timeline>

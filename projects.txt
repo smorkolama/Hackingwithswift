@@ -32,3 +32,4 @@ height, bottom, same apsect ratio
 21-LocalNotifications - DateComponents, local notifications, calendar/interval triggers, notification actions
 22-Detect-A-Beacon - iBeacons
 23-SwiftyNinja - CaseIterable, SpriteKit groups/sequences, SKTexture, SKShapeNode
+24-SwiftStrings - Strings, contains, NSAttributedString and where to use it
