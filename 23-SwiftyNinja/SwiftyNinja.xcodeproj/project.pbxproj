@@ -18,6 +18,8 @@
 		4362604E24605ADC005E6BF5 /* swoosh1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4362604C24605AC1005E6BF5 /* swoosh1.caf */; };
 		4362604F24605ADC005E6BF5 /* swoosh2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4362604D24605AC1005E6BF5 /* swoosh2.caf */; };
 		4362605024605ADC005E6BF5 /* swoosh3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4362604B24605AC1005E6BF5 /* swoosh3.caf */; };
+		43626052246063CF005E6BF5 /* launch.caf in Resources */ = {isa = PBXBuildFile; fileRef = 436260512460639B005E6BF5 /* launch.caf */; };
+		4362605424606661005E6BF5 /* sliceFuse.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4362605324606661005E6BF5 /* sliceFuse.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		4362604B24605AC1005E6BF5 /* swoosh3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = swoosh3.caf; path = Assets.xcassets/swoosh3.dataset/swoosh3.caf; sourceTree = "<group>"; };
 		4362604C24605AC1005E6BF5 /* swoosh1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = swoosh1.caf; path = Assets.xcassets/swoosh1.dataset/swoosh1.caf; sourceTree = "<group>"; };
 		4362604D24605AC1005E6BF5 /* swoosh2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = swoosh2.caf; path = Assets.xcassets/swoosh2.dataset/swoosh2.caf; sourceTree = "<group>"; };
+		436260512460639B005E6BF5 /* launch.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = launch.caf; path = Assets.xcassets/launch.dataset/launch.caf; sourceTree = "<group>"; };
+		4362605324606661005E6BF5 /* sliceFuse.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = sliceFuse.sks; path = Assets.xcassets/sliceFuse.dataset/sliceFuse.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,9 +77,11 @@
 				4362603724605106005E6BF5 /* GameViewController.swift */,
 				4362603924605106005E6BF5 /* Main.storyboard */,
 				4362603C2460510B005E6BF5 /* Assets.xcassets */,
+				436260512460639B005E6BF5 /* launch.caf */,
 				4362604C24605AC1005E6BF5 /* swoosh1.caf */,
 				4362604D24605AC1005E6BF5 /* swoosh2.caf */,
 				4362604B24605AC1005E6BF5 /* swoosh3.caf */,
+				4362605324606661005E6BF5 /* sliceFuse.sks */,
 				4362603E2460510B005E6BF5 /* LaunchScreen.storyboard */,
 				436260412460510B005E6BF5 /* Info.plist */,
 			);
@@ -147,6 +153,8 @@
 				4362604F24605ADC005E6BF5 /* swoosh2.caf in Resources */,
 				436260402460510B005E6BF5 /* LaunchScreen.storyboard in Resources */,
 				4362603424605106005E6BF5 /* Actions.sks in Resources */,
+				4362605424606661005E6BF5 /* sliceFuse.sks in Resources */,
+				43626052246063CF005E6BF5 /* launch.caf in Resources */,
 				4362604E24605ADC005E6BF5 /* swoosh1.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

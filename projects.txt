@@ -31,3 +31,4 @@ height, bottom, same apsect ratio
 20-FireworksNight - SpriteKit, shake gestures, Timer, UIBezierPath, 'for case let'
 21-LocalNotifications - DateComponents, local notifications, calendar/interval triggers, notification actions
 22-Detect-A-Beacon - iBeacons
+23-SwiftyNinja - CaseIterable, more complexity
