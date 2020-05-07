@@ -19,7 +19,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     }
 
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("Count: \(images.count)")
         return images.count
     }
@@ -31,7 +31,6 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             imageView.image = images[indexPath.item]
         }
 
-        print("Return \(cell)")
         return cell
     }
 
