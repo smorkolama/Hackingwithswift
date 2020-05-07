@@ -33,3 +33,4 @@ height, bottom, same apsect ratio
 22-Detect-A-Beacon - iBeacons
 23-SwiftyNinja - CaseIterable, SpriteKit groups/sequences, SKTexture, SKShapeNode
 24-SwiftStrings - Strings, contains, NSAttributedString and where to use it
+25-SelfieShare - Collection views, image picker, GCD, multipeer connectivity
