@@ -14,7 +14,10 @@ class ViewController: UICollectionViewController {
 
     var peerID = MCPeerID(displayName: UIDevice.current.name)
     var mcSession: MCSession?
-    var mcAdvertiserAssistant: MCAdvertiserAssistant?
+
+    // Only works with iOS12, not iOS13!
+    //    var mcAdvertiserAssistant: MCAdvertiserAssistant?
+    var mcNearbyServiceAdvertiser: MCNearbyServiceAdvertiser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,14 +63,14 @@ class ViewController: UICollectionViewController {
     }
 
     func startHosting(action: UIAlertAction) {
-        guard let mcSession = mcSession else { return }
-        mcAdvertiserAssistant = MCAdvertiserAssistant(serviceType: "hws-project25", discoveryInfo: nil, session: mcSession)
-        mcAdvertiserAssistant?.start()
+        mcNearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "smorkolama")
+        mcNearbyServiceAdvertiser?.delegate = self
+        mcNearbyServiceAdvertiser?.startAdvertisingPeer()
     }
 
     func joinSession(action: UIAlertAction) {
         guard let mcSession = mcSession else { return }
-        let mcBrowser = MCBrowserViewController(serviceType: "hws-project25", session: mcSession)
+        let mcBrowser = MCBrowserViewController(serviceType: "smorkolama", session: mcSession)
         mcBrowser.delegate = self
         present(mcBrowser, animated: true)
     }
@@ -146,5 +149,15 @@ extension ViewController: MCBrowserViewControllerDelegate {
 
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
         dismiss(animated: true)
+    }
+}
+
+extension ViewController: MCNearbyServiceAdvertiserDelegate {
+    func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
+                    didReceiveInvitationFromPeer peerID: MCPeerID,
+                    withContext context: Data?,
+                    invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+        print("Received invitation from \(peerID)")
+        invitationHandler(true, mcSession)
     }
 }
